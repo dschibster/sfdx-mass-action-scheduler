@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Batch_Success_Percentage__c</fullName>
-    <deprecated>false</deprecated>
-    <description>Calculates the success percentage of the batch job&#39;s executions.</description>
+    <description>Calculates the success percentage of the batch job&apos;s executions.</description>
     <externalId>false</externalId>
     <formula>IF(
   Processed_Batches__c &gt; 0,
@@ -10,7 +9,7 @@
   0
 )</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <inlineHelpText>Calculates the success percentage of the batch job&#39;s executions.</inlineHelpText>
+    <inlineHelpText>Calculates the success percentage of the batch job&apos;s executions.</inlineHelpText>
     <label>Batch Success %</label>
     <precision>18</precision>
     <required>false</required>

@@ -10,7 +10,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>Salesforce MAS: Batch Apex Error Event process didn&#39;t start: No matching records found</stringValue>
+                <stringValue>Salesforce MAS: Batch Apex Error Event process didn&apos;t start: No matching records found</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -36,7 +36,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>Salesforce MAS: Batch Apex Error Event process didn&#39;t start: Multiple matching records found</stringValue>
+                <stringValue>Salesforce MAS: Batch Apex Error Event process didn&apos;t start: Multiple matching records found</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -686,12 +686,12 @@
         <name>multipleRecordsFoundTextTemplate</name>
         <text>Hello {!OrganizationName} Admin, 
 
-The MAS: Batch Apex Error Event process is configured to start when a Batch Apex Error Platform Event platform event message occurs. A Batch Apex Error Platform Event message occurred, but the process didn&#39;t start because multiple records in your org match the values specified in the process&#39;s Object node.
+The MAS: Batch Apex Error Event process is configured to start when a Batch Apex Error Platform Event platform event message occurs. A Batch Apex Error Platform Event message occurred, but the process didn&apos;t start because multiple records in your org match the values specified in the process&apos;s Object node.
 
 Here are the values from the Batch Apex Error Platform Event message.
 Created By ID: {!myVariable_myEvent.CreatedById}
 
-To fix this issue, adjust the matching filters in the process&#39;s Object node.
+To fix this issue, adjust the matching filters in the process&apos;s Object node.
 
 Thank you, 
 Salesforce Process Automation</text>
@@ -701,12 +701,12 @@ Salesforce Process Automation</text>
         <name>noRecordsFoundTextTemplate</name>
         <text>Hello {!OrganizationName} Admin, 
 
-The MAS: Batch Apex Error Event process is configured to start when a Batch Apex Error Platform Event platform event message occurs. A Batch Apex Error Platform Event message occurred, but the process didn&#39;t start because no records in your org match the values specified in the process&#39;s Object node.
+The MAS: Batch Apex Error Event process is configured to start when a Batch Apex Error Platform Event platform event message occurs. A Batch Apex Error Platform Event message occurred, but the process didn&apos;t start because no records in your org match the values specified in the process&apos;s Object node.
 
 Here are the values from the Batch Apex Error Platform Event message.
 Created By ID: {!myVariable_myEvent.CreatedById}
 
-To fix this issue, adjust the matching filters in the process&#39;s Object node.
+To fix this issue, adjust the matching filters in the process&apos;s Object node.
 
 Thank you, 
 Salesforce Process Automation</text>

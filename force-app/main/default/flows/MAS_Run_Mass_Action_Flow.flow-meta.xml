@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <description>Runs a Mass Action Configuration record now, despite it&#39;s normal schedule.</description>
+        <description>Runs a Mass Action Configuration record now, despite it&apos;s normal schedule.</description>
         <name>Run_Mass_Action</name>
         <label>Run Mass Action</label>
         <locationX>1114</locationX>
@@ -124,7 +124,7 @@
         </rules>
     </decisions>
     <decisions>
-        <description>Route to next step based on user&#39;s choice on the Confirm Action screen: run the selected configuration or choose a different one.</description>
+        <description>Route to next step based on user&apos;s choice on the Confirm Action screen: run the selected configuration or choose a different one.</description>
         <name>Decision_Run_Config</name>
         <label>Run Config?</label>
         <locationX>928</locationX>
@@ -398,7 +398,7 @@
     <startElementReference>Decision_Have_Record_Id</startElementReference>
     <status>Active</status>
     <variables>
-        <description>The id of the Mass Action Configuration record where the flow was launched by a quick action on the record page. If your flow has a Text input variable called `recordId`, the quick action passes the record&#39;s ID into that variable at runtime. If not, it doesn&#39;t and the flow tries to run anyway. This is how we can pre-select the configuration record in the flow.</description>
+        <description>The id of the Mass Action Configuration record where the flow was launched by a quick action on the record page. If your flow has a Text input variable called `recordId`, the quick action passes the record&apos;s ID into that variable at runtime. If not, it doesn&apos;t and the flow tries to run anyway. This is how we can pre-select the configuration record in the flow.</description>
         <name>recordId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
