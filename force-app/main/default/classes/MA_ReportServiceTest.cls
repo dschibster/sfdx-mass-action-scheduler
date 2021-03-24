@@ -42,7 +42,7 @@
 private class MA_ReportServiceTest {
 
     // the test report should filter for accounts whose name starts with this value
-    private static final String ACCOUNT_NAME_PREFIX = 'dca_mass_action: MA Test Account';
+    private static final String ACCOUNT_NAME_PREFIX = 'SM_ID_AC_40';
 
     /**
      * Can't annotate this method with @TestSetup because not allowed
@@ -53,7 +53,7 @@ private class MA_ReportServiceTest {
 
         // get rid of any data that might be in our test report's filters
         String nameFilter = ACCOUNT_NAME_PREFIX + '%';
-        delete [ SELECT id FROM Account ORDER By ID LIMIT 2];
+        delete [ SELECT id FROM Account WHERE Sandbox_Migration_Id__c LIKE :ACCOUNT_NAME_PREFIX LIMIT 2];
 
     }
 
@@ -65,7 +65,7 @@ private class MA_ReportServiceTest {
         Map<String, String> expectedColumns = new Map<String, String>{
             'ACCOUNT_ID' => Schema.Account.Id.getDescribe().getLabel(),
             'PARENT_ID'  => Schema.Account.ParentId.getDescribe().getLabel(),
-            'SANDBOX_MIGRATION_ID' => Schema.Account.Sandbox_Migration_Id__c.getDescribe().getLabel()
+            'Account.Sandbox_Migration_Id__c' => Schema.Account.Sandbox_Migration_Id__c.getDescribe().getLabel()
         };
 
         Report testReport = [
@@ -78,7 +78,7 @@ private class MA_ReportServiceTest {
 
         Map<String, String> actualColumns = service.getIdColumns( testReport.Id );
 
-        //System.assertEquals( expectedColumns, actualColumns );
+        System.assertEquals( expectedColumns, actualColumns );
 
     }
 
@@ -113,9 +113,9 @@ private class MA_ReportServiceTest {
     static void testReportIterator() {
 
         String nameFilter = ACCOUNT_NAME_PREFIX + '%';
-        Set<ID> expectedIds = new Map<ID, Account>([ SELECT Id FROM Account ORDER By ID LIMIT 2 ]).keySet();
+        Set<ID> expectedIds = new Map<ID, Account>([ SELECT Id FROM Account WHERE Sandbox_Migration_Id__c LIKE :nameFilter LIMIT 2 ]).keySet();
 
-        List<String> expectedColumnNames = new List<String>{ 'ACCOUNT_ID', 'PARENT_ID', 'SANDBOX_MIGRATION_ID' };
+        List<String> expectedColumnNames = new List<String>{ 'ACCOUNT_ID', 'PARENT_ID', 'Account.Sandbox_Migration_Id__c' };
 
         Report testReport = [
             SELECT Id
@@ -138,8 +138,8 @@ private class MA_ReportServiceTest {
 
         Test.stopTest();
         reportRowIterator.getDetailColumnNames();
-        /*System.assertEquals( expectedIds, actualIds );
-        System.assertEquals( expectedColumnNames,  );*/
+        System.assertEquals( expectedIds, actualIds );
+        System.assertEquals( expectedColumnNames,   reportRowIterator.getDetailColumnNames());
 
     }
 
@@ -228,7 +228,7 @@ private class MA_ReportServiceTest {
 
         Test.stopTest();
 
-        //System.assertEquals( expectedIds, actualIds );
+        System.assertEquals( expectedIds, actualIds );
 
     }
 
