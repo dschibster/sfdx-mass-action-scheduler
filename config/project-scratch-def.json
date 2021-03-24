@@ -2,18 +2,5 @@
     "orgName": "Mass Action Scheduler",
     "edition": "Enterprise",
     "hasSampleData": false,
-    "features": [],
-    "settings": {
-        "mobileSettings": {
-            "enableS1EncryptedStoragePref2": false
-        },
-        "securitySettings": {
-            "sessionSettings": {
-                "lockerServiceCSP": true,
-                "lockerServiceFrozenRealm": true,
-                "enableClickjackNonsetupUser": false,
-                "enableClickjackNonsetupUserHeaderless": false
-            }
-        }
-    }
+    "features": []
 }

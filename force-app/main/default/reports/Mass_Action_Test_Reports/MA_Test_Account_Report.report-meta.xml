@@ -6,10 +6,13 @@
     <columns>
         <field>PARENT_ID</field>
     </columns>
+    <columns>
+        <field>Account.Sandbox_Migration_Id__c</field>
+    </columns>
     <description>For report automation solutions by Doug Ayers (https://douglascayers.com)</description>
     <filter>
         <criteriaItems>
-            <column>ACCOUNT.NAME</column>
+            <column>Account.Sandbox_Migration_Id__c</column>
             <isUnlocked>true</isUnlocked>
             <operator>startsWith</operator>
             <value>dca_mass_action: MA Test Account</value>

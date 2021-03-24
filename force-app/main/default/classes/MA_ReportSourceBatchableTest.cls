@@ -32,7 +32,7 @@ private class MA_ReportSourceBatchableTest {
             Batch_Size__c = 200,
             Source_Type__c = 'Report',
             Source_Report_ID__c = r.Id,
-            Source_Report_Column_Name__c = 'ACCOUNT_ID'
+            Source_Report_Column_Name__c = 'SANDBOX_MIGRATION_ID'
         );
 
     }

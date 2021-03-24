@@ -53,7 +53,7 @@ private class MA_ReportServiceTest {
 
         // get rid of any data that might be in our test report's filters
         String nameFilter = ACCOUNT_NAME_PREFIX + '%';
-        //delete [ SELECT id FROM Account ORDER By ID LIMIT 2];
+        delete [ SELECT id FROM Account ORDER By ID LIMIT 2];
 
     }
 
@@ -64,7 +64,8 @@ private class MA_ReportServiceTest {
 
         Map<String, String> expectedColumns = new Map<String, String>{
             'ACCOUNT_ID' => Schema.Account.Id.getDescribe().getLabel(),
-            'PARENT_ID'  => Schema.Account.ParentId.getDescribe().getLabel()
+            'PARENT_ID'  => Schema.Account.ParentId.getDescribe().getLabel(),
+            'SANDBOX_MIGRATION_ID' => Schema.Account.Sandbox_Migration_Id__c.getDescribe().getLabel()
         };
 
         Report testReport = [
@@ -114,7 +115,7 @@ private class MA_ReportServiceTest {
         String nameFilter = ACCOUNT_NAME_PREFIX + '%';
         Set<ID> expectedIds = new Map<ID, Account>([ SELECT Id FROM Account ORDER By ID LIMIT 2 ]).keySet();
 
-        List<String> expectedColumnNames = new List<String>{ 'ACCOUNT_ID', 'PARENT_ID' };
+        List<String> expectedColumnNames = new List<String>{ 'ACCOUNT_ID', 'PARENT_ID', 'SANDBOX_MIGRATION_ID' };
 
         Report testReport = [
             SELECT Id
