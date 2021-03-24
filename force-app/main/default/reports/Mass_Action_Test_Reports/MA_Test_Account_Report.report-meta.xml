@@ -15,7 +15,7 @@
             <column>Account.Sandbox_Migration_Id__c</column>
             <isUnlocked>true</isUnlocked>
             <operator>startsWith</operator>
-            <value>dca_mass_action: MA Test Account</value>
+            <value>SM_ID_AC_40</value>
         </criteriaItems>
     </filter>
     <format>Tabular</format>
