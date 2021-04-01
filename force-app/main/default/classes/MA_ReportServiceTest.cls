@@ -64,8 +64,7 @@ private class MA_ReportServiceTest {
 
         Map<String, String> expectedColumns = new Map<String, String>{
             'ACCOUNT_ID' => Schema.Account.Id.getDescribe().getLabel(),
-            'PARENT_ID'  => Schema.Account.ParentId.getDescribe().getLabel(),
-            'Account.Sandbox_Migration_Id__c' => Schema.Account.Sandbox_Migration_Id__c.getDescribe().getLabel()
+            'PARENT_ID'  => Schema.Account.ParentId.getDescribe().getLabel()
         };
 
         Report testReport = [
@@ -78,7 +77,7 @@ private class MA_ReportServiceTest {
 
         Map<String, String> actualColumns = service.getIdColumns( testReport.Id );
 
-        System.assertEquals( expectedColumns, actualColumns );
+        System.assertEquals( expectedColumns.keySet(), actualColumns.keySet() );
 
     }
 
@@ -113,7 +112,7 @@ private class MA_ReportServiceTest {
     static void testReportIterator() {
 
         String nameFilter = ACCOUNT_NAME_PREFIX + '%';
-        Set<ID> expectedIds = new Map<ID, Account>([ SELECT Id FROM Account WHERE Sandbox_Migration_Id__c LIKE :nameFilter LIMIT 2 ]).keySet();
+        Set<ID> expectedIds = new Map<ID, Account>([ SELECT Id FROM Account WHERE Sandbox_Migration_Id__c LIKE :nameFilter]).keySet();
 
         List<String> expectedColumnNames = new List<String>{ 'ACCOUNT_ID', 'PARENT_ID', 'Account.Sandbox_Migration_Id__c' };
 
@@ -198,7 +197,7 @@ private class MA_ReportServiceTest {
     static void testGetNextPageReportResults() {
 
         String nameFilter = ACCOUNT_NAME_PREFIX + '%';
-        List<Account> accounts = [ SELECT Id FROM Account ORDER By ID LIMIT 2 ];
+        List<Account> accounts = [ SELECT Id FROM Account  WHERE Sandbox_Migration_Id__c LIKE :nameFilter ORDER By ID ];
         ID firstAccountId = accounts[0].Id;
 
         // remove first account; when filter the report we expect all the other ids to be returned

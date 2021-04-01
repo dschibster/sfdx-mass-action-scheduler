@@ -172,6 +172,7 @@ License: BSD 3-Clause License
                     component.find( 'inputDeveloperName' ),
                     component.find( 'inputDescription' ),
                     component.find( 'inputActive' ),
+                    component.find( 'inputBulkified' ),
                     component.find( 'inputBatchSize' ),
                     component.find( 'inputNamedCredential' )
                 ];

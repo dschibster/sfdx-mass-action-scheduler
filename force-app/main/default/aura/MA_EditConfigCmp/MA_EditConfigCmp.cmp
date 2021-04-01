@@ -715,6 +715,19 @@ License: BSD 3-Clause License
                                 required="false"
                                 type="checkbox"
                                 class="slds-p-top_x-small"/>
+                            
+                            <c:slds_label label="{!v.objectDescribe.fields.Bulkified__c.label}"
+                                        helpText="{!v.objectDescribe.fields.Bulkified__c.helpText}"/> 
+
+                            <lightning:input aura:id="inputBulkified"
+                                name="inputBulkified"
+                                variant="label-hidden"
+                                label="{!v.objectDescribe.fields.Bulkified__c.label}"
+                                value="{!v.record.bulkified}"
+                                checked="{!v.record.bulkified}"
+                                required="false"
+                                type="checkbox"
+                                class="slds-p-top_x-small"/>
 
                             <c:slds_label label="{!v.objectDescribe.fields.Batch_Size__c.label}"
                                           helpText="{!v.objectDescribe.fields.Batch_Size__c.helpText}"/>

@@ -37,6 +37,9 @@ public inherited sharing class MA_MassActionConfigWrapper {
     public Boolean active { get; set; }
 
     @AuraEnabled
+    public Boolean bulkified { get; set; }
+
+    @AuraEnabled
     public Integer batchSize { get; set; }
 
     @AuraEnabled
@@ -137,6 +140,7 @@ public inherited sharing class MA_MassActionConfigWrapper {
             this.developerName = config.DeveloperName__c;
             this.namedCredential = config.Named_Credential__c;
             this.active = ( config.Active__c == null ? this.active : config.Active__c );
+            this.bulkified = ( config.Bulkified__c == null ? this.bulkified : config.Bulkified__c );
             this.batchSize = ( config.Batch_Size__c == null ? this.batchSize : config.Batch_Size__c.intValue() );
             this.description = config.Description__c;
             // source
@@ -181,6 +185,7 @@ public inherited sharing class MA_MassActionConfigWrapper {
             DeveloperName__c = this.developerName,
             Named_Credential__c = this.namedCredential,
             Active__c = ( this.active == null ? true : this.active ),
+            Bulkified__c =  ( this.bulkified == null ? true : this.bulkified ),
             Batch_Size__c = ( this.batchSize == null ? 200 : this.batchSize ),
             Description__c = this.description,
             // source

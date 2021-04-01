@@ -70,6 +70,7 @@ public inherited sharing class MA_MassActionUtils {
                 Active__c,
                 Batch_Size__c,
                 Description__c,
+                Bulkified__c,
                 // source
                 Source_Type__c,
                 Source_Report_ID__c,
@@ -254,6 +255,42 @@ public inherited sharing class MA_MassActionUtils {
         return targetRows;
     }
 
+    /**
+     * Given maps of source data whose keys match Mass_Action_Mapping__c.Source_Field_Name__c then
+     * returns new maps whose keys match Mass_Action_Mapping__c.Target_Field_Name__c and whose values
+     * match the source data. The returned maps will have as many keys as there are mappings.
+     *
+     * When considering a new source for Mass Action Service, then it is the source provider's
+     * responsibility to transform its raw data format into source map format for reuse of this method.
+     * For example, the report source and list view source classes handle their own transformations.
+     */
+    public static List<Map<String, Object>> buildActionInputsBulk( List<Map<String, Object>> sourceRows, List<Mass_Action_Mapping__c> mappings ) {
+
+        System.debug( 'MA_MassActionUtils.buildActionInputs' );
+        System.debug( 'mappings: ' + mappings );
+        System.debug( '----------' );
+
+        List<Map<String, Object>> targetRows = new List<Map<String, Object>>();
+
+        /*We assume that we only have one ID mapping in this*/
+        Mass_Action_Mapping__c idMapping = mappings[0]; 
+        List<Object> collectionOfValues = new List<Object>();
+
+        for ( Map<String, Object> sourceRow : sourceRows ) {
+
+            Map<String, Object> sourceRowLowerCaseKeyMap = MA_MapUtils.convertKeysToLowercase( sourceRow );
+
+            collectionOfValues.add(sourceRowLowerCaseKeyMap.get(idMapping.Source_Field_Name__c.toLowerCase()));
+
+        }
+
+        Map<String, Object> targetRow = new Map<String, Object>();
+        targetRow.put(idMapping.Target_Field_Name__c, collectionOfValues);
+        targetRows.add(targetRow);
+
+        return targetRows;
+    }
+
     // ------------------------------------------------------------------------
 
     /**
@@ -277,10 +314,15 @@ public inherited sharing class MA_MassActionUtils {
 
         } else {
 
-            List<Map<String, Object>> targetRowMaps = MA_MassActionUtils.buildActionInputs( sourceRowMaps, config.Mass_Action_Mappings__r );
-
+            List<Map<String, Object>> targetRowMaps = new List<Map<String,Object>>();
+            if(!config.Bulkified__c){
+                targetRowMaps = MA_MassActionUtils.buildActionInputs( sourceRowMaps, config.Mass_Action_Mappings__r );
+            }else{
+                targetRowMaps = MA_MassActionUtils.buildActionInputsBulk( sourceRowMaps, config.Mass_Action_Mappings__r );
+            }
             String baseUrl = MA_MassActionUtils.getCalloutRestEndpointURL( config.Named_Credential__c );
             MA_MassActionUtils.invokeAction( baseUrl, config, targetRowMaps );
+            
 
         }
 
@@ -640,7 +682,8 @@ public inherited sharing class MA_MassActionUtils {
             body = getInvokeActionHttpRequestBody_Actions( targetRowMaps );
 
         }
-
+        
+        System.debug(JSON.serializePretty(body));
         return body;
     }
 
