@@ -1,12 +1,23 @@
 <!--
-Strike by Appiphony
-
-Version: 1.0.0
-Website: http://www.lightningstrike.io
-GitHub: https://github.com/appiphony/Strike-Components
-License: BSD 3-Clause License
+/****************************************************************************************************
+* Aura Component defaultTokens
+*
+*   Create By	:   Christian Gottlieb (mindsquare GmbH)
+*   Create Date	:   2020-01-15
+*   Description	:	These are the Bryt default Brand colors, to be referenced in local CSS
+                    Note:   Dew to a technical limitation, these values are neither accessible in the Global CSS file,
+                            nor can they be stored in a Global Variable, Salesforce does not support this CSS Feature.
+                            Hence in Global CSS they are referenced by their actual value
+*
+*****************************************************************************************************/
 -->
-<aura:tokens extends="force:base">
+
+<!-- there are now some added tokens for Mass Actions here.-->
+<aura:tokens>
+    <aura:token name="bryt_blue" value="#009ee2"/>
+    <aura:token name="bryt_light_blue" value="#7fcef0"/>
+    <aura:token name="bryt_orange" value="#ff6700"/>
+    <aura:token name="bryt_anthracite" value="#80807f"/>
     <aura:token name="fontSizeSmall" value="0.75rem"/>
     <aura:token name="spacingXxLarge" value="3rem"/>
     <aura:token name="fontSizeXxLarge" value="1.75rem"/>
