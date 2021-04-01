@@ -28,16 +28,16 @@ License: BSD 3-Clause License
 }
 
 .THIS .slds-tabs--path .slds-tabs--path__item.slds-is-active+.slds-is-lost:before {
-    background-color: t(colorBackgroundInverse);
+    /*background-color: t(colorBackgroundInverse);*/
 }
 
 .THIS .slds-tabs--path .slds-tabs--path__item.slds-is-active:hover+.slds-is-lost:before {
-    background-color: t(colorBackgroundAltInverse);
+    /*background-color: t(colorBackgroundAltInverse);*/
 }
 
 .THIS .slds-path__mark-current[disabled]:hover,
 .THIS .slds-path__mark-current[disabled]:focus {
-    background-color: t(colorBackgroundShade);
+    /*background-color: t(colorBackgroundShade);*/
 }
 /*
 Copyright 2017 Appiphony, LLC
